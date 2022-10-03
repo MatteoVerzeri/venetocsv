@@ -53,5 +53,33 @@ namespace venetocsv
 
             sr.Close();
         }
+        public static void Ricerca(string filename, string nome, string x)
+        {
+            int i = 0, j = 527, m, pos = -1;
+            StreamReader sr = new StreamReader(filename);
+
+
+            do
+            {
+                m = (i + j) / 2;
+                if ((nome = sr.ReadLine()) == x)
+                    pos = m;
+                else if (string.Compare((nome = sr.ReadLine()), x) == -1)
+                    i = m + 1;
+                else
+                    j = m - 1;
+
+            } while (i <= j && pos == -1);
+
+            if (pos != -1)
+                MessageBox.Show(pos.ToString());
+            else
+                MessageBox.Show("non trovato");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string x = textBox2.Text;
+        }
     }
 }
