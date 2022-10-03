@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace venetocsv
 {
@@ -19,7 +20,12 @@ namespace venetocsv
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            int recordlength = 528;
+            var f = new FileStream(@"./veneto_verona.csv", FileMode.Open, FileAccess.ReadWrite);
+            int tot=((int)f.Length);
+            int linee=tot/recordlength+1;
+            string line = Convert.ToString(linee);
+            MessageBox.Show(line);
         }
     }
 }
