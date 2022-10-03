@@ -26,6 +26,32 @@ namespace venetocsv
             int linee=tot/recordlength+1;
             string line = Convert.ToString(linee);
             MessageBox.Show(line);
+            
+        }
+        
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string text = textBox1.Text;
+            leggi(@"./veneto_verona.csv", text);
+        }
+        public static void leggi(string filename, string text)
+        {
+            StreamReader sr = new StreamReader(filename);
+            string line;
+            // Read and display lines from the file until the end of
+            // the file is reached.
+            while ((line = sr.ReadLine()) != null)
+            {
+                if ((line = sr.ReadLine()) == text)
+                {
+                    MessageBox.Show(line);
+                    break;
+                }
+                
+            }
+
+            sr.Close();
         }
     }
 }
